@@ -6,6 +6,8 @@ qlcuahang=[]
 def mo_file(_path,qlcuahang):
     f=open(_path,'r', encoding ='utf-8')
     for dong in csv.reader(f):
+        if dong[0]=='Mã cửa hàng':
+            continue
         qlcuahang.append({'Mã cửa hàng':dong[0],'Tên cửa hàng':dong[1], 'Vốn đầu tư':dong[2],
         'Doanh thu':dong[3],'Tiền thuế':dong[4]})
     f.close()
@@ -63,7 +65,6 @@ def tim_cua_hang(qlcuahang):
                    'Vốn đầu tư','Doanh thu','Tiền thuế'))
                 print('{:^20}{:^20}{:^20}{:^20}{:^20}'.format(ch['Mã cửa hàng'],ch['Tên cửa hàng'],
                     ch['Vốn đầu tư'],ch['Doanh thu'],ch['Tiền thuế']))
-                return 
         tt=int(input("Bạn có muốn tiếp tục không ? số bất kì: có; 0: không "))
         if tt==0:
             break
@@ -123,7 +124,7 @@ def loc(qlcuahang):
     return
 #Hàm tìm cửa hàng có doanh thu cao nhất
 def dt_cao_nhat(qlcuahang):
-    doanh_thu = sorted(qlcuahang,reverse=True, key=lambda x: x['Doanh thu'])
+    doanh_thu = sorted(qlcuahang,reverse=True, key=lambda x: int(x['Doanh thu']))
     a=doanh_thu[0]
     print(" Cửa hàng có doanh thu cao nhất là:",a['Tên cửa hàng'])
     return    

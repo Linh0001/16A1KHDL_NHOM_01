@@ -28,7 +28,9 @@ while True:
     elif chon==4:
         luu_file(_path,qlcuahang)
     elif chon==5:
-        tim_cua_hang(qlcuahang)
+        a=tim_cua_hang(qlcuahang)
+        if a==0:
+            print("Không tồn tại cửa hàng")
     elif chon==6:
         xoa_ch(qlcuahang)
     elif chon==7:
